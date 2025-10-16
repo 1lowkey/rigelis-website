@@ -34,16 +34,16 @@
       </template>
 
    <template v-else-if="s.type === 'partners'">
-  <!-- background image -->
-  <img v-if="s.image" :src="s.image" :alt="s.title"
-       style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0; z-index:1;" />
-
-  <!-- overlay content -->
-  <div class="overlay" style="position:relative; z-index:2; text-align:center; padding:2rem;">
-    <h2>{{ s.title }}</h2>
-    <div class="partners-grid">
-      <div v-for="(p, idx) in s.partners" :key="idx" class="partner">
-        <img v-if="p.logo" :src="p.logo" :alt="p.name" />
+  <img v-if="s.image" :src="s.image" :alt="s.title" 
+       style="width:100%;height:100%;object-fit:cover;filter:brightness(.35)" />
+  <div class="overlay">
+    <div class="content" :data-type="s.type">
+      <h2>{{ s.title }}</h2>
+      <div class="partners-grid">
+        <div v-for="(p, idx) in s.partners" :key="idx" class="partner">
+          <img v-if="p.logo" :src="p.logo" :alt="p.name" />
+          <div v-else style="color:#666">{{ p.name }}</div>
+        </div>
       </div>
     </div>
   </div>

@@ -11,13 +11,29 @@
       </div>
 
       <nav>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+  <ul :class="['nav-links', { open: menuOpen }]">
+    <li><a href="#about">About</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <!-- SVG Toggle Icons -->
+  <div class="mobile-menu-toggle" @click="menuOpen = !menuOpen">
+    <img
+      v-if="!menuOpen"
+      src="/public/menu-open.svg"
+      alt="Open menu"
+      class="menu-icon"
+    />
+    <img
+      v-else
+      src="/public/menu-close .svg"
+      alt="Close menu"
+      class="menu-icon"
+    />
+  </div>
+</nav>
     </header>
 
     <!-- Slider -->
@@ -82,8 +98,10 @@
   </div>
 </template>
 <script setup>
-import Slider from '/components/slider.vue'
 import { ref } from 'vue'
+const menuOpen = ref(false)
+import Slider from '/components/slider.vue'
+
 
 const current = ref(0)
 const isPaused = ref(false)    // ✅ add this
