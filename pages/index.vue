@@ -82,7 +82,7 @@
   </div>
 </template>
 <script setup>
-import Slider from '/components/Slider.vue'
+import Slider from '/components/slider.vue'
 import { ref } from 'vue'
 
 const current = ref(0)
